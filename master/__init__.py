@@ -1,3 +1,4 @@
+from dominate.tags import a
 from flask import Flask
 from flask_bootstrap import Bootstrap
 
@@ -8,7 +9,7 @@ app.config['SECRET_KEY'] = c.SECRET_KEY
 
 bootstrap = Bootstrap(app)
 
-from Master.logic import views
+from master.logic import views
 
 # if __name__ == '__main__':
 #     app.run()
