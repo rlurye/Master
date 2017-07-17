@@ -1,0 +1,97 @@
+<html>
+<head>
+    <title>Sample "Hello, World" Application</title>
+    <!-- Bootstrap core CSS -->
+    <link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{{ url_for('static', filename='css/custom.css') }}" rel="stylesheet">
+</head>
+<body bgcolor=white>
+<div class="section-preview">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 centered">
+                <h1 class="text-center">Big Brother Watching 1.0</h1>
+                <p class="lead text-center">Подробная информация о поступлении на сайте вуза — <a target="_blank"
+                                                                                                  href="http://www.eltech.ru/ru/abiturientam/priem-v-magistraturu/podavshie-zayavlenie/"
+                                                                                                  title="Поступление">eltech.ru</a>.
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Интересующие направления</h1>
+            </div>
+            {% for entry in matter %}
+            <div class="col-lg-4 col-sm-4">
+                <div class="preview">
+                    <div class="options">
+                        <h3>{{ entry.name }}</h3>
+                        <p></p>
+                        <div>
+                            {% if entry.bud != '-' %}
+                            <a class="btn btn-info" target="_blank"
+                               href="/t/{{ entry.code }}b">Бюджет</a>
+                            {% endif %}
+                            {% if entry.pay != '-' %}
+                            <a class="btn btn-info" target="_blank"
+                               href="/t/{{ entry.code }}p">Контракт</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Все направления</h1>
+            </div>
+            <div class="col-lg-4 col-sm-4">
+                <div class="preview">
+                    <div class="options">
+                        <h3>Все направления</h3>
+                        <p></p>
+                        <div>
+                            <a class="btn btn-info" target="_blank"
+                               href="/t/all">Сохранить</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>Остальные направления</h1>
+            </div>
+            {% for entry in others %}
+            <div class="col-lg-4 col-sm-4">
+                <div class="preview">
+                    <div class="options">
+                        <h3>{{ entry.name }}</h3>
+                        <p></p>
+
+                        <div>
+                            {% if entry.bud != '-' %}
+                            <a class="btn btn-info" target="_blank"
+                               href="/t/{{ entry.code }}b">Бюджет</a>
+                            {% endif %}
+                            {% if entry.pay != '-' %}
+                            <a class="btn btn-info" target="_blank"
+                               href="/t/{{ entry.code }}p">Контракт</a>
+                            {% endif %}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+
+    </div>
+</div>
+
+</body>
